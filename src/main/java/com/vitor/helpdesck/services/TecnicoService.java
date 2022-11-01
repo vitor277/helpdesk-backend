@@ -2,6 +2,7 @@ package com.vitor.helpdesck.services;
 
 import com.vitor.helpdesck.domain.Tecnico;
 import com.vitor.helpdesck.repositories.TecnicoRepository;
+import com.vitor.helpdesck.services.exceptions.ObjectnotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,6 @@ public class TecnicoService {
 
     public Tecnico findById(Integer id){
         Optional<Tecnico> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontrado! Id: " + id));
     }
 }
