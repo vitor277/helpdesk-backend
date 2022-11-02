@@ -1,6 +1,7 @@
 package com.vitor.helpdesck.services;
 
 import com.vitor.helpdesck.domain.Tecnico;
+import com.vitor.helpdesck.domain.tos.TecnicoDTO;
 import com.vitor.helpdesck.repositories.TecnicoRepository;
 import com.vitor.helpdesck.services.exceptions.ObjectnotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class TecnicoService {
 
     public List<Tecnico> findALL() {
         return repository.findAll();
+    }
+
+    public Tecnico create(TecnicoDTO objDTO) {
+        objDTO.setId(null);
+        Tecnico newObj = new Tecnico(objDTO);
+        return repository.save(newObj);
     }
 }
