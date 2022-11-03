@@ -8,6 +8,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.FetchType;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -18,12 +19,14 @@ public class TecnicoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
+    @NotNull(message = "O Campo nome é requerido")
     protected String nome;
 
-    @Column(unique = true)
+    @NotNull(message = "O Campo CPF é requerido")
     protected String cpf;
-    @Column(unique = true)
+    @NotNull(message = "O Campo Email é requerido")
     protected String email;
+    @NotNull(message = "O Campo Senha é requerido")
     protected String senha;
 
     @ElementCollection(fetch = FetchType.EAGER)
