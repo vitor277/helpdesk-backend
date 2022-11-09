@@ -2,7 +2,7 @@ package com.vitor.helpdesck.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vitor.helpdesck.domain.enums.Perfil;
-import com.vitor.helpdesck.domain.tos.TecnicoDTO;
+import com.vitor.helpdesck.domain.dtos.TecnicoDTO;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

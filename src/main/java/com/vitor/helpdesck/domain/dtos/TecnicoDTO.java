@@ -1,11 +1,10 @@
-package com.vitor.helpdesck.domain.tos;
+package com.vitor.helpdesck.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vitor.helpdesck.domain.Tecnico;
 import com.vitor.helpdesck.domain.enums.Perfil;
 
 import javax.persistence.CollectionTable;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.FetchType;
 import javax.validation.constraints.NotNull;
