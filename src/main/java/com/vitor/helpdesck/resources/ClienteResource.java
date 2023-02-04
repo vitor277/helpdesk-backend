@@ -1,9 +1,9 @@
 package com.vitor.helpdesck.resources;
 
 import com.vitor.helpdesck.domain.Cliente;
-import com.vitor.helpdesck.domain.Tecnico;
+
 import com.vitor.helpdesck.domain.dtos.ClienteDTO;
-import com.vitor.helpdesck.domain.dtos.TecnicoDTO;
+
 import com.vitor.helpdesck.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
