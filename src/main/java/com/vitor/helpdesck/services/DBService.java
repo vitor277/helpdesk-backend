@@ -10,6 +10,7 @@ import com.vitor.helpdesck.repositories.ChamadoRepository;
 import com.vitor.helpdesck.repositories.ClienteRepository;
 import com.vitor.helpdesck.repositories.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -23,12 +24,14 @@ public class DBService {
     private ClienteRepository clienteRepository;
     @Autowired
     private ChamadoRepository chamadoRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public void instanciaDB(){
-        Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "77202818884", "valdir@email.com", "123");
+        Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "77202818884", "valdir@email.com", encoder.encode("123"));
         tec1.addPerfil(Perfil.TECNICO);
 
-        Cliente cli1 = new Cliente(null, "Linus Torvalds", "15451314810", "Linus@email.com", "000");
+        Cliente cli1 = new Cliente(null, "Linus Torvalds", "15451314810", "Linus@email.com", encoder.encode("000"));
         tec1.addPerfil(Perfil.CLIENTE);
 
         Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);

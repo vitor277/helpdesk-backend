@@ -11,6 +11,7 @@ import com.vitor.helpdesck.repositories.TecnicoRepository;
 import com.vitor.helpdesck.services.exceptions.DataIntegriyViolationException;
 import com.vitor.helpdesck.services.exceptions.ObjectnotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -24,6 +25,8 @@ public class ClienteService {
 
     @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public Cliente findById(Integer id) {
         Optional<Cliente> obj = repository.findById(id);
@@ -34,6 +37,7 @@ public class ClienteService {
 
     public Cliente create(ClienteDTO objDTO) {
         objDTO.setId(null);
+        objDTO.setSenha(encoder.encode(objDTO.getSenha()));
         ValidaPorCpfEEmail(objDTO);
         Cliente newObj = new Cliente(objDTO);
         return repository.save(newObj);
